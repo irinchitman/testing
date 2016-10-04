@@ -1,1 +1,1095 @@
-Hi
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Graphic Design Now In Production</title>
+	<meta name="description" content="Easiest jQuery Tooltip Ever">
+	<script src="jquery.js" type="text/javascript"></script>
+	<script src="main.js" type="text/javascript"></script>
+	</meta>
+	
+	<!-- the CSS for Smooth Div Scroll -->
+	<link rel="Stylesheet" type="text/css" href="css/smoothDivScroll.css" />
+	
+	<!-- Styles for my specific scrolling content -->
+	<style type="text/css">
+
+		body{
+			background-color: #888;
+			background-image: url('images/exhibition/combostrike.gif');
+			background-size: auto 196px;
+			background-repeat:repeat;
+		}
+
+		img{
+			width:250px;
+			z-index: 700;
+		}
+
+
+		.minitoolbar{
+			position: fixed;
+			width: 105%;
+			margin-left: -10px;
+			height: 73px;
+			bottom: 0px;
+			background-color: rgba(0, 0, 0, .85);
+			z-index: 520;
+			/*background-color: magenta;*/
+			-webkit-font-smoothing: antialiased;
+		}
+
+		.exit{
+			position: fixed;
+			width: 105%;
+			height: 73px;
+			bottom: 0px;
+			background-color: none;
+			z-index: 520;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		.toolbar{
+			position:fixed;
+			width:105%;
+			height:255px;
+			bottom:0px;
+			background-color: rgba(0, 0, 0, .85);
+			z-index:500;
+			left:0px;
+		}
+
+
+		.tableofcontent {
+			width: 400px;
+			height: 400px;
+			background-color: green;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.toolbartopic{
+			margin-left:40px;
+			margin-right:40px;
+			margin-top: 25px;
+			width:500px;
+			position: fixed;
+			cursor: pointer;
+/*			background-color: red;*/
+		}
+
+		.mini{
+			margin-top: 18px;
+			margin-bottom: 10px;
+		}
+
+		.tool-container{
+			width: 1050px;
+			height: 193px;
+			margin-right: 0px;
+			margin-left: 583px;
+			margin-top: 33px;
+			-webkit-column-count: 4;
+			-webkit-column-gap: 40px;
+			z-index: 550;
+			position: fixed;
+			}
+
+		a{
+			text-decoration: none;
+			color: white;
+		}
+
+		.quote{
+			color:black;
+		}
+
+		a.extralinks{
+			color:black;
+		}
+
+		a.extralinks:hover{
+			background-color: black;
+			color:white;
+			font-weight: bold;
+		}
+
+		a.tool{
+			font-weight: bold;
+			font-family: akkurat, arial, sans-serif;
+			font-size: 16px;
+			letter-spacing: 0px;
+			line-height: 21px;
+			text-decoration: none;
+			background-color: none;
+			-webkit-font-smoothing: antialiased;
+		}
+
+/*		a.avoidclick{
+			pointer-events:none;
+		}*/
+
+		a.intext{
+			background-color: black;
+			color:white;
+			font-family: akkurat, arial, sans-serif;
+			font-size: 16px;
+			letter-spacing: 0px;
+			line-height: 21px;
+			font-weight: bold;
+		}
+
+		a.content{
+			color:black;
+		}
+
+		a.content:hover{
+			background:black;
+			color:white;
+		}
+
+		a.intext:hover{
+			background-color: yellow;
+			color:black;
+		}
+
+		.highlight{
+			background-color: yellow;
+			color: black;
+			font-size: 16px;
+			letter-spacing: 0px;
+			line-height: 21px;
+		}
+
+		a.tool:hover{
+			background-color: yellow;
+			color: black;
+			font-size: 16px;
+			letter-spacing: 0px;
+			line-height: 21px;
+		}
+
+		#makeMeScrollable
+		{
+			width:105%;
+			height: 578px;
+/*			background-color: red;*/
+		}
+
+		.normal{
+			background-color: white;
+		}
+
+		.opening{
+/*			background-color: rgba(255,75,0,1);;*/
+			background-color: white;
+		}
+		
+		
+		section{
+			width:101.5%;
+			height:auto;
+			margin-top:206px;
+			position: relative;
+			left:-10px;
+			box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+			opacity: .65;
+			cursor: pointer;
+/*			background-color: yellow;*/
+		}
+
+		section.lastchild{
+			margin-bottom:206px;
+
+		}
+
+		section.first{
+			margin-top: 196px;
+		}
+
+		section.theone{
+			opacity: 1;
+		}
+		/* Replace the last selector for the type of element you have in
+		   your scroller. If you have div's use #makeMeScrollable div.scrollableArea div,
+		   if you have links use #makeMeScrollable div.scrollableArea a and so on. */
+		section.nottheone{
+			opacity: .65;
+		}
+
+		section:hover{
+			opacity: 1;
+
+		}
+
+		#makeMeScrollable div.scrollableArea div.mainbody, p
+		{
+			position: relative;
+			margin-right: 20px;
+			margin-left: 20px;
+			float: left;
+			padding: 0px;
+			width:505px;
+			/* If you don't want the images in the scroller to be selectable, try the following
+			   block of code. It's just a nice feature that prevent the images from
+			   accidentally becoming selected/inverted when the user interacts with the scroller. */
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+			font-family: akkurat, arial, sans-serif;
+/*			background-color: green;*/
+		}
+
+
+		.youarespecial {
+			position: relative;
+			margin-left: 40px;
+			margin-right: 20px;
+			float: left;
+			padding: 0px;
+			width:505px;
+			-webkit-font-smoothing: antialiased;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+			font-family: akkurat, arial, sans-serif;
+/*			background-color: red;*/
+		}
+
+		.contentpage{
+			text-align: left;
+			font-weight: bold;
+			font-family: akkurat, arial, sans-serif;
+			line-height: 19px;
+			font-size: 15px;
+			color: black;
+			letter-spacing: .0525em;
+		}
+
+		.marker{
+			text-align: center;
+			font-weight: bold;
+			font-family: akkurat, arial, sans-serif;
+			line-height: 19px;
+			font-size: 15px;
+			color: black;
+			letter-spacing: .0525em;
+		}
+
+
+		.markercontainer{
+			height:20px;
+			padding:0px;
+			margin-top: 25px;
+			position: relative;
+			z-index: 20;
+			/*background-color: black;*/
+			-webkit-font-smoothing: antialiased;
+
+		}
+
+		.markerspecialcontainer{
+			height:20px;
+			padding:0px;
+			margin-top: 37px;
+			position: relative;
+			text-align: center;
+			font-weight: bold;
+			font-family: akkurat, arial, sans-serif;
+			line-height: 19px;
+			font-size: 15px;
+			color: black;
+			letter-spacing: .0525em;
+			z-index: 20;
+			/*background-color: black;*/
+			-webkit-font-smoothing: antialiased;
+
+		}
+
+		a.marker:hover{
+			background-color: black;
+			color: white;
+		}
+		.actual-essay{
+			margin: 25px 0px 55px 0px;
+			height: 425px;
+			font-size: 18px;
+			letter-spacing: 0px;
+			line-height: 25px;
+			-webkit-font-smoothing: antialiased;
+	/*		background-color: yellow;*/
+			overflow: hidden;
+*/
+		}
+
+		.columnbreak{
+			-webkit-column-count: 2;
+			-webkit-column-gap: 40px;
+			/* background-color: green; */
+			overflow: hidden;
+			font-weight: normal;
+			font-family: akkurat, arial, sans-serif;
+			font-size: 11px;
+			letter-spacing: 0px;
+			line-height: 13px;
+			margin-top: 28px;
+			height: 422px;	
+		}
+
+		p.caption{
+			margin: 25px 0px 55px 0px;
+			height: 425px;
+			font-weight: normal;
+			font-family: akkurat, arial, sans-serif;
+			font-size: 11px;
+			letter-spacing: 0px;
+			line-height:13px;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		.showdescription{
+			margin: 37px 0px 43px 0px;
+			height: 425px;
+			-webkit-font-smoothing: antialiased;
+			color: rgba(0,0,0,.80);
+			-webkit-font-smoothing: antialiased;
+			}
+
+
+		.imagecontent{
+			margin-top: 25px;
+			height:455px;
+			margin-bottom: 25px;
+			text-align: center;
+/*			background-color: red;*/
+			opacity: .5;
+		}
+
+		h1{
+			font-weight: bold;
+			font-family: akkurat, arial, sans-serif;
+			font-size: 32px;
+			letter-spacing: -0.0875px;
+			line-height: 41px;
+			margin:0px;
+			color:black;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		.toolbarh1{
+			color:white;
+		}
+
+		.showtitle{
+			font-weight: bold;
+			font-family: akkurat, arial, sans-serif;
+			font-size: 54px;
+			letter-spacing: -1px;
+			line-height: 63px;
+			margin: 0px;
+			display: inline;
+			-webkit-font-smoothing: antialiased;
+			color:black;
+			}
+
+		.showtitle-container{
+			margin-top:25px;
+/*			background-color:yellow;*/
+		}
+
+		h2{
+			font-weight: normal;
+			font-family: akkurat, arial, sans-serif;
+			font-size: 32px;
+			line-height: 41px;
+			letter-spacing: -0.01em;
+			-webkit-font-smoothing: antialiased;
+			margin:0px;
+			/*background-color:green;*/}
+
+		.withtop{
+			margin-top:34px;
+			/*background-color: red*/;
+		}
+
+/*		.initialhide {
+			display: none;
+		}*/
+
+/*		.magenta{
+			color: yellow;
+		}*/
+
+		h3
+			{font-weight: bold;
+			font-family: akkurat, arial, sans-serif;
+			font-size: 18px;
+			line-height: 36px;
+			letter-spacing: -0.0025em;
+			-webkit-font-smoothing: antialiased;
+			margin: 0px;}
+
+		#preview{
+			position:absolute;
+			border:none;
+			background:rgba(0, 0, 0, .85);
+			padding:10px;
+			display:none;
+			color:#fff;
+			width:250px;
+			font-weight: normal;
+			font-family: akkurat, arial, sans-serif;
+			font-size: 11px;
+			letter-spacing: 0px;
+			line-height:13px;
+			z-index:690;
+/*			box-shadow: 10px 10px 5px rgba(255, 255, 0, 0.25);*/
+			}
+
+	</style>
+
+</head>
+
+<body>
+	<div class="toolbar">
+		<div class="toolbartopic">
+			<a class="scroll" href="#destination1"><h1 class="toolbarh1">Table of Content</h1></a>
+		</div>
+
+		<div class="exit">
+			<div class="toolbartopic mini">
+				<h1 class="toolbarh1 magenta">−</h1>
+			</div>
+		</div>
+
+		<div class="tool-container">		    
+		    <a class="scroll tool" id="designerasproducer-link" href="#destination2">The Designer as Producer</a></br>
+		    <a class="scroll tool" id="fuckcontent-link" href="#destination3">Fuck Content</a></br>
+		    <a class="scroll tool" id="researchanddestroy-link" href="#destination4">Research and Destroy</a></br>
+		    <a class="scroll tool" href="#destination5">Unreveling</a></br>
+		    <a class="scroll tool" href="#destination6">Tool</a></br>
+		    <a class="scroll tool" href="#destination7">Design Etrepreneur 3.0</a></br>
+		    <a class="scroll tool" id="practicefromeverydaylife-link" href="#destination8">Practice from Everyday Life</a></br>
+		    <a class="scroll tool" href="#destination9">Magazine Culture</a></br>
+		    <a class="scroll tool" href="#destination10">The Persistence of Poster</a></br>
+		    <a class="scroll tool" href="#destination11">The Making of </br> Typographic Man</a></br>
+		    <a class="scroll tool" href="#destination12">Experimental Typography</a></br>
+		    <a class="scroll tool" href="#destination13">Design in Motion</a></br>
+		    <a class="scroll tool" href="#destination14">The Art of the Title Sequence</a></br>
+		    <a class="scroll tool" href="#destination15">I Am Still Alive #21</a></br>
+		    <a class="scroll tool" href="#destination16">Bubbles, Lines, and String</a></br>
+		    <a class="scroll tool" href="#destination17">Brand Matrix</a></br>
+		    <a class="scroll tool" id="brandnewworlds-link" href="#destination18">Brand New Worlds</a></br>
+		    <a class="scroll tool" href="#destination19">Designing Our Own Graves</a></br>
+		    <a class="scroll tool" id="schooldays-link" href="#destination20">School Days</a>
+		</div>
+	</div>
+
+	<div class="minitoolbar initialhide">
+		<div class="toolbartopic mini">
+			<h1 class="toolbarh1">+</h1>
+		</div>
+	</div>
+
+<section class="first" id="destination1">	
+	<div class="opening" id="makeMeScrollable">
+		<div class="youarespecial">
+			<div class="markercontainer"></div>
+			<div class="actual-essay showtitle-container">
+				<h1 class="showtitle">Graphic Design—</br>  Now in Production</h1>
+				<h2 class="withtop">The Largest Graphic Design Museum Exhibition Since 1989 </h2>
+			</div>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer"></div>
+			<div class="actual-essay">
+				<h2>Co-organized by Cooper-Hewitt, National Design Museum <br>and the Walker Art Center, Graphic Design—Now in Production explores works from vibrant sectors and genres of graphic design <br> since 2000 to today. 
+				</h2>
+			</div>
+		</div>			
+		<div class="mainbody">
+			<div class="markercontainer contentpage"></div>
+			<div class="actual-essay">
+				<h2><u>Table of Contents</u><br><br></h2>
+				<h1><a class="scroll content designerasproducer" href="#destination2">The Designer as Producer</a></h1>
+				<h3><a href="images/designerasproducer/combo.gif"class="preview avoidclick designerasproducer quote">by Ellen Lupton</a></h3></br>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Fuck Content</a></h1>
+				<h3><a href="images/fuckcontent/combo.gif"class="preview avoidclick designerasproducer quote">by Michael Rock</a></h3></br>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Research and Destroy</a></h1>
+				<h3>by Daniel van der Velden</h3></br>
+
+			</div>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<div class="actual-essay">
+				<h2><u></u><br><br></h2>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Unraveling</a></h1>
+				<h3>by Lorraine Wild</h3></br>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Tool</a></h1>
+				<h3>by Andrew Blauvelt</h3></br>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Design Entrepreneur 3.0</a></h1>
+				<h3>by Steven Heller</h3>
+			</div>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<div class="actual-essay">
+				<h2><u></u><br><br></h2>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Practice for Everyday Life</a></h1>
+				<h3>by James Goggin</h3></br>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Reading and Writing</a></h1>
+				<h3>by Ellen Lupton</h3></br>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Magazine Culture</a></h1>
+				<h3>by Jeremy Leslie</h3>				
+			</div>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<div class="actual-essay">
+				<h2><u></u><br><br></h2>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">The Persistence of Posters</a></h1>
+				<h3>by Andrew Blauvelt</h3></br>
+				<h1><a class="scroll content designerasproducer" href="#destination2">The Designer as Producer</a></h1>
+				<h3>by Ellen Lupton</h3></br>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">The Making of Typographic Man</a></h1>
+				<h3>by Ellen Lupton</h3>
+
+			</div>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<div class="actual-essay">
+				<h2><u></u><br><br></h2>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Experimental Typography</a></h1>
+				<h2>by Peter Bi'lak</h2></br>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">The Art of the Title Sequence</a></h1>
+				<h2>by Ian Albinson</h2></br>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">I am Still Alive</a></h1>
+				<h2>by Abake</h2>
+			</div>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<div class="actual-essay">
+				<h2><u></u><br><br></h2>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Bubbles, Lines, and String</a></h1>
+				<h2>by Peter Hall</h2></br>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Brand Matrix</a></h1>
+				<h2>by Armin Vit and Bryony <br>Gomez-Palacio</h2></br>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Brand New Worlds</a></h1>
+				<h2>by Andrew Blauvelt</h2></br></br>
+			</div>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<div class="actual-essay">
+				<h2><u></u><br><br></h2>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Designing Our Own Graves</a></h1>
+				<h2>by Dmitri Siegal</h2></br></br>
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">School Days</a></h1>
+				<h2>by Rob Giampietro</h2>
+			</div>
+		</div>		
+	</div>
+</section>
+
+<section id="destination2">	
+	<div class="normal"id="makeMeScrollable">
+		<div class="youarespecial">
+			<div class="markercontainer marker"></div>
+			<div class="actual-essay">
+				<h1>The Designer as Producer</h1>
+				<h3>by Ellen Lupton</h3>
+				<h2><br>&ldquo;Production belongs to the physical activity of the base, the factory <br>floor: it is the traditional domain of the paste-up artist, the stripper, the letter, the typesetter.&rdquo;</h2>
+			</div>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay">The slogan ‘designer as author’ has enlivened debates about the future of graphic design since the early 1990s. Behind this phrase is the will to help designers to initiate content, to work in an entrepreneurial way rather than simply reacting to problems and tasks placed before them by clients. The word author suggests agency, intention, and creation, as opposed to the more passive functions of consulting, styling, and formatting. Authorship is a provocative model for rethinking the role of the graphic designer at the start of the millennium; it hinges, however, on a nostalgic ideal of the writer or artist as a singular point of origin.
+			</br></br>
+			The avant-garde movements of the 1910s and 1920s critiqued the ideal of authorship as a process of dredging unique forms from the depths of the interior self. Artists and intellectuals challenged romantic definitions of art by plunging into the worlds of mass media and mass production.
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker">The Designer as Producer</div>
+			<p class="actual-essay">
+			As an alternative to ‘designer as author’, I propose ‘designer as producer’. Production is a concept embedded in the history of modernism. Avant-garde artists and designers treated the techniques of manufacture not as neutral, transparent means to an end but as devices equipped with cultural meaning and aesthetic character. In 1934, the German critic Walter Benjamin wrote ‘The Author as Producer’, a text that attacked the conventional view of authorship as a purely literary enterprise. He exclaimed that new forms of communication – film, radio, advertising, newspapers, the illustrated press – were melting down traditional artistic genres and corroding the borders between writing and reading, authoring and editing.
+		</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay">
+			Benjamin was a Marxist, committed to the notion that the technologies of manufacture should be owned by the workers who operate them. In Marxist terminology, the ‘means of production’ are the heart of human culture and should be collectively owned. Benjamin claimed that writing (and other arts) are grounded in the material structures of society, from the educational institutions that foster literacy to the publishing networks that manufacture and distribute texts. In detailing an agenda for a politically engaged literary practice, Benjamin demanded that artists must not merely adopt political ‘content,’ but must revolutionize the means through which their work is produced and distributed. 
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker">The Designer as Producer</div>
+			<p class="actual-essay">
+			Benjamin attacked the model of the writer as an ‘expert’ in the field of literary form, equipped only to craft words into texts and not to question the physical life of the work. The producer must ask, Where will the work be read? Who will read it? How will it be manufactured? What other texts and pictures will surround it? Benjamin argued that artists and photographers must not view their task as solely visual, lest they become mere suppliers of form to the existing apparatus of bourgeois publishing: ‘What we require of the photographer is the ability to give his picture the caption that wrenches it from modish commerce and gives it a revolutionary useful value. But we shall make this demand most emphatically when we – the writers – take up photography. Here, too, therefore, technical progress is for the author as producer the foundation of political progress’.
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay">
+			At a 1962 conference at the Museum of Modern Art, conservative art critic Hilton Kramer denounced Pop Art as "indistinguishable from advertising art" because "Pop Art does not tell us what it feels like to be living through the present moment of civilization. Its social effect is simply to reconcile us to a world of commodities, banalities and vulgarities." But perhaps the content of graphic design is exactly that: an evocation of "what it feels like to be living through the present moment of civilization," with all its "commodities, banalities and vulgarities." How else can we discuss the content of a typeface or why the typography of a surfing magazine suddenly becomes relevant? Or how a series of made-up or 'self-initiated' posters—already a medium of dubious functionality— can end up on the wall of a major design museum? Work must be saying something, which is different than being about something.
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay">
+			Benjamin claimed that to bridge the divide between author and publisher, author and reader, poet and popularizer, is a revolutionary act, because it challenges the professional and economic categories upon which the institutions of ‘literature’ and ‘art’ are erected.
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay">
+		</div>
+	</div>
+	
+</section>
+
+<section id="destination3">	
+	<div class="normal"id="makeMeScrollable">
+		<div class="youarespecial">
+			<div class="markercontainer marker"></div>
+			<div class="actual-essay">
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Fuck Content</a></h1>
+				<h3>by Michael Rock</h3>
+				<h2><br><a href="images/fuckcontent/combo.gif"class="preview avoidclick designerasproducer quote">&ldquo;The problem is one of content. <br>I think the misconception is that without deep content, design <br>is reduced to pure style, a bad of dubious tricks.&rdquo;</a></h2>
+			</div>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay">In <i>Designer as Author</i> I argued that we are insecure about the value of our work. We are envious of the power, social position and cachet that artists and authors seem to command. By declaring ourselves &#8220;designer/authors&#8221; we hope to garner similar respect. Our deep-seated anxiety has motivated a movement in design that values origination of content over manipulation of content. 
+			</br></br>
+			<i>Designer as Author</i> was an attempt to recuperate the act of design itself as essentially linguistic&mdash;a vibrant, evocative language. However, it has often been read as a call for designers to generate content: in effect, to become designers and authors, not designers as authors. While I am all for more authors, that was not quite the point I wanted to make. 
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker">Fuck Content</div>
+			<p class="actual-essay">
+			The problem is one of content. The misconception is that without deep content, design is reduced to pure style, a bag of dubious tricks. In graphic-design circles, form-follows-function is reconfigured as form-follows-content. If content is the source of form, always preceding it and imbuing it with meaning, form without content (as if that were even possible) is some kind of empty shell.
+			</br></br>
+			The apotheosis of this notion, repeated ad nauseum (still!), is <a class="intext researchanddestroy-inline" href="#">Beatrice Warde&#8217;s</a> famous Crystal Goblet metaphor, which asserts that design  (the glass) should be a transparent vessel for content (the wine). Anyone who favored the ornate or the bejeweled was a knuckle-dragging oaf. Agitators on both sides of the ideological spectrum took up the debate: minimalists embraced it as a manifesto; maximalists decried it as aesthetic fascism. Neither camp questioned the basic, implicit premise: it&#8217;s all about the wine.
+			</br></br>
+		
+		</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay">
+			This false dichotomy has circulated for so long that we have started to believe it ourselves. It has become a central tenet of design education and the benchmark against which all design is judged. We seem to accept the fact that developing content is more essential than shaping it, that good content is the measure of good design. 
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay">
+			Back when <a href="images/fuckcontent/rand.png" title="<br>Ann Rand and Paul Rand,<br><i>Sparkle and Spin: A Book About Words</i><br>&copy 2006 Ann Rand, Paul Rand"  class="preview intext avoidclick researchanddestroy-inline practicefromeverydaylife brandnewworlds schooldays">Paul Rand</a> wrote "There is no such thing as bad content, only bad form," I remember being intensely annoyed. I took it as an abdication of a designer's responsibility to meaning. Over time, I have come to read it differently: he was not defending hate speech or schlock or banality; he meant that the designer's purview is to shape, not to write. But that shaping itself is a profoundly affecting form. (Perhaps this is the reason that modern designers—&mdash;<a href="images/fuckcontent/rand.png" title="<br>Ann Rand and Paul Rand,<br><i>Sparkle and Spin: A Book About Words</i><br>&copy 2006 Ann Rand, Paul Rand"  class="preview intext avoidclick researchanddestroy-inline practicefromeverydaylife brandnewworlds schooldays">Rand</a>, <a href="images/fuckcontent/munari.gif" title="<br>Bruno Munari, <i>Bruno Munari's ABC</i><br>&copy 1960 Bruno Munari<br>Bruno Munari among his children's book,</br> circa 1951"  class="preview intext avoidclick">Munari</a>, <a href="i#" class="intext avoidclick schooldays">Leoni</a>&mdash;always seem t end their careers designing children's books. The children's book is the purest venue of the designer/author because the content is negligible and the evocative potential of the form unlimited.)?
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker">Fuck Content</div>
+			<p class="actual-essay">
+			So what else is new? This seems to be a rather mundane point, but for some reason we don't really believe it. We don't believe shaping is enough. So to bring design out from under the thumb of content we must go one step further and observe that treatment is, in fact, a kind of text itself, as complex and referential as any traditional understanding of content. 
+			<br><br>
+			A director can be the esteemed auteur of a film he didn't write, score, edit or shoot. What makes a <a href="#" class="intext avoidclick designerasproducer">Hitchcock</a> film a <a href="#" class="intext avoidclick designerasproducer">Hitchcock</a> film is not the story but a consistency of style, which winds intact through different technologies, plots, actors, and time periods like a substance of its own. Every film is about filmmaking. His great genius is that he is able to mold the form into his style in a genuinely unique and entertaining way. The meaning of his work is not in the story but in the storytelling. 
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker">Fuck Content</div>
+			<p class="actual-essay">
+			The span of graphic design is not a history of concepts but of forms. Form has evolved dramatically from one year to the next, and suggests a profession that continually revises and reshapes the world through the way it is rendered. Stellar examples of graphic design, design that changes the way we look at the world, are often found in service of the most mundane content: an ad for ink, cigarettes, sparkplugs or machinery. Think of Piet Zwart's catalogues for electrical cable; or the travel posters of Cassandre or Matter; or the New Wave work of Weingart, Greiman and Freidman; or the punk incitations of Jamie Reid, in which the manipulation of form has an essential, even transformative, meaning. 
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay">
+			At a 1962 conference at the Museum of Modern Art, conservative art critic Hilton Kramer denounced Pop Art as "indistinguishable from advertising art" because "Pop Art does not tell us what it feels like to be living through the present moment of civilization. Its social effect is simply to reconcile us to a world of commodities, banalities and vulgarities." But perhaps the content of graphic design is exactly that: an evocation of "what it feels like to be living through the present moment of civilization," with all its "commodities, banalities and vulgarities." How else can we discuss the content of a typeface or why the typography of a surfing magazine suddenly becomes relevant? Or how a series of made-up or 'self-initiated' posters—already a medium of dubious functionality— can end up on the wall of a major design museum? Work must be saying something, which is different than being about something.</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker">Fuck Content</div>
+			<p class="actual-essay">
+			Because the nature of the designed object is limited, individual objects are rarely substantial enough to contain fully rendered ideas. Ideas develop over many projects, spanning years. Form itself is indexical. We are intimately, physically connected to the work we produce, and it is inevitable that our work bears our stamp. The choice of projects in each designer's oeuvre lays out a map of interests and proclivities. (I use the singular designer in the categorical sense, not the individual.) The way those projects are parsed out, disassembled, reorganized and rendered reveals a philosophy, an aesthetic position, an argument and a critique.
+			</br></br>
+			This deep connection to making also positions design in a modulating role between the user and the world. By manipulating form, design reshapes that essential relationship. Form is replaced by exchange. The things we make negotiate a relationship over which we have a profound control.</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay columnbreak">
+			<b>Other Links</b></br></br>
+			<a href="images/fuckcontent/wernerforss01.png" class="preview extralinks avoidclick">Sharon Werner and Sarah Forss,<i>Alphabesasties and Other Amazing Types,</i>2009,Werner Design Werks,Inc. published by Blue Appple Books</a>
+			</br></br>
+			<a href="images/fuckcontent/wernerforss.png" class="preview extralinks avoidclick">
+			Sharon Werner and Sarah Forss, <i>Bugs by the Numbers,</i> 2011,Werner Design Weks, Inc, published by Blue Apple Books
+			</a>
+			<a href="images/fuckcontent/marx.png"  class="preview extralinks avoidclick">
+			</br></br>
+			Stefan Marx, <i>The Lousy Animals & Friends Coloring Book</i>, 2010, designed by UrsLehni.</a>
+			</br></br>
+			<a href="images/fuckcontent/monster.png"  class="preview extralinks avoidclick">
+			Stegan G. Bucher, <i>12 Bigger Monsters,</i> 2011</a>
+			</p>
+		</div>
+		
+	</div>
+	
+</section>
+
+<section class="lastchild" id="destination4">	
+	<div class="normal"id="makeMeScrollable">
+		<div class="youarespecial">
+			<div class="markercontainer marker"></div>
+			<div class="actual-essay">
+				<h1><h1><a class="scroll content fuckcontent" id="designerasproducer-link" href="#destination3">Research and Destroy</a></h1>
+				<h3>by Daniel van der Velden</h3>
+				<h2><br><a href="images/fuckcontent/combo.gif"class="preview avoidclick designerasproducer quote">&ldquo;The problem is one of content. <br>I think the misconception is that without deep content, design <br>is reduced to pure style, a bad of dubious tricks.&rdquo;</a></h2>
+			</div>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay">In <i>Designer as Author</i> I argued that we are insecure about the value of our work. We are envious of the power, social position and cachet that artists and authors seem to command. By declaring ourselves &#8220;designer/authors&#8221; we hope to garner similar respect. Our deep-seated anxiety has motivated a movement in design that values origination of content over manipulation of content. 
+			</br></br>
+			<i>Designer as Author</i> was an attempt to recuperate the act of design itself as essentially linguistic&mdash;a vibrant, evocative language. However, it has often been read as a call for designers to generate content: in effect, to become designers and authors, not designers as authors. While I am all for more authors, that was not quite the point I wanted to make. 
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker">Fuck Content</div>
+			<p class="actual-essay">
+			The problem is one of content. The misconception is that without deep content, design is reduced to pure style, a bag of dubious tricks. In graphic-design circles, form-follows-function is reconfigured as form-follows-content. If content is the source of form, always preceding it and imbuing it with meaning, form without content (as if that were even possible) is some kind of empty shell.
+			</br></br>
+			The apotheosis of this notion, repeated ad nauseum (still!), is <a class="intext researchanddestroy-inline" href="#">Beatrice Warde&#8217;s</a> famous Crystal Goblet metaphor, which asserts that design  (the glass) should be a transparent vessel for content (the wine). Anyone who favored the ornate or the bejeweled was a knuckle-dragging oaf. Agitators on both sides of the ideological spectrum took up the debate: minimalists embraced it as a manifesto; maximalists decried it as aesthetic fascism. Neither camp questioned the basic, implicit premise: it&#8217;s all about the wine.
+			</br></br>
+		
+		</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay">
+			This false dichotomy has circulated for so long that we have started to believe it ourselves. It has become a central tenet of design education and the benchmark against which all design is judged. We seem to accept the fact that developing content is more essential than shaping it, that good content is the measure of good design. 
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay">
+			Back when <a href="images/fuckcontent/rand.png" title="<br>Ann Rand and Paul Rand,<br><i>Sparkle and Spin: A Book About Words</i><br>&copy 2006 Ann Rand, Paul Rand"  class="preview intext avoidclick researchanddestroy-inline practicefromeverydaylife brandnewworlds schooldays">Paul Rand</a> wrote "There is no such thing as bad content, only bad form," I remember being intensely annoyed. I took it as an abdication of a designer's responsibility to meaning. Over time, I have come to read it differently: he was not defending hate speech or schlock or banality; he meant that the designer's purview is to shape, not to write. But that shaping itself is a profoundly affecting form. (Perhaps this is the reason that modern designers—&mdash;<a href="images/fuckcontent/rand.png" title="<br>Ann Rand and Paul Rand,<br><i>Sparkle and Spin: A Book About Words</i><br>&copy 2006 Ann Rand, Paul Rand"  class="preview intext avoidclick researchanddestroy-inline practicefromeverydaylife brandnewworlds schooldays">Rand</a>, <a href="images/fuckcontent/munari.gif" title="<br>Bruno Munari, <i>Bruno Munari's ABC</i><br>&copy 1960 Bruno Munari<br>Bruno Munari among his children's book,</br> circa 1951"  class="preview intext avoidclick">Munari</a>, <a href="i#" class="intext avoidclick schooldays">Leoni</a>&mdash;always seem t end their careers designing children's books. The children's book is the purest venue of the designer/author because the content is negligible and the evocative potential of the form unlimited.)?
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker">Fuck Content</div>
+			<p class="actual-essay">
+			So what else is new? This seems to be a rather mundane point, but for some reason we don't really believe it. We don't believe shaping is enough. So to bring design out from under the thumb of content we must go one step further and observe that treatment is, in fact, a kind of text itself, as complex and referential as any traditional understanding of content. 
+			<br><br>
+			A director can be the esteemed auteur of a film he didn't write, score, edit or shoot. What makes a <a href="#" class="intext avoidclick designerasproducer">Hitchcock</a> film a <a href="#" class="intext avoidclick designerasproducer">Hitchcock</a> film is not the story but a consistency of style, which winds intact through different technologies, plots, actors, and time periods like a substance of its own. Every film is about filmmaking. His great genius is that he is able to mold the form into his style in a genuinely unique and entertaining way. The meaning of his work is not in the story but in the storytelling. 
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker">Fuck Content</div>
+			<p class="actual-essay">
+			The span of graphic design is not a history of concepts but of forms. Form has evolved dramatically from one year to the next, and suggests a profession that continually revises and reshapes the world through the way it is rendered. Stellar examples of graphic design, design that changes the way we look at the world, are often found in service of the most mundane content: an ad for ink, cigarettes, sparkplugs or machinery. Think of Piet Zwart's catalogues for electrical cable; or the travel posters of Cassandre or Matter; or the New Wave work of Weingart, Greiman and Freidman; or the punk incitations of Jamie Reid, in which the manipulation of form has an essential, even transformative, meaning. 
+			</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay">
+			At a 1962 conference at the Museum of Modern Art, conservative art critic Hilton Kramer denounced Pop Art as "indistinguishable from advertising art" because "Pop Art does not tell us what it feels like to be living through the present moment of civilization. Its social effect is simply to reconcile us to a world of commodities, banalities and vulgarities." But perhaps the content of graphic design is exactly that: an evocation of "what it feels like to be living through the present moment of civilization," with all its "commodities, banalities and vulgarities." How else can we discuss the content of a typeface or why the typography of a surfing magazine suddenly becomes relevant? Or how a series of made-up or 'self-initiated' posters—already a medium of dubious functionality— can end up on the wall of a major design museum? Work must be saying something, which is different than being about something.</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker">Fuck Content</div>
+			<p class="actual-essay">
+			Because the nature of the designed object is limited, individual objects are rarely substantial enough to contain fully rendered ideas. Ideas develop over many projects, spanning years. Form itself is indexical. We are intimately, physically connected to the work we produce, and it is inevitable that our work bears our stamp. The choice of projects in each designer's oeuvre lays out a map of interests and proclivities. (I use the singular designer in the categorical sense, not the individual.) The way those projects are parsed out, disassembled, reorganized and rendered reveals a philosophy, an aesthetic position, an argument and a critique.
+			</br></br>
+			This deep connection to making also positions design in a modulating role between the user and the world. By manipulating form, design reshapes that essential relationship. Form is replaced by exchange. The things we make negotiate a relationship over which we have a profound control.</p>
+		</div>
+		<div class="mainbody">
+			<div class="markercontainer marker"></div>
+			<p class="actual-essay columnbreak">
+			<b>Other Links</b></br></br>
+			<a href="images/fuckcontent/wernerforss01.png" class="preview extralinks avoidclick">Sharon Werner and Sarah Forss,<i>Alphabesasties and Other Amazing Types,</i>2009,Werner Design Werks,Inc. published by Blue Appple Books</a>
+			</br></br>
+			<a href="images/fuckcontent/wernerforss.png" class="preview extralinks avoidclick">
+			Sharon Werner and Sarah Forss, <i>Bugs by the Numbers,</i> 2011,Werner Design Weks, Inc, published by Blue Apple Books
+			</a>
+			<a href="images/fuckcontent/marx.png"  class="preview extralinks avoidclick">
+			</br></br>
+			Stefan Marx, <i>The Lousy Animals & Friends Coloring Book</i>, 2010, designed by UrsLehni.</a>
+			</br></br>
+			<a href="images/fuckcontent/monster.png"  class="preview extralinks avoidclick">
+			Stegan G. Bucher, <i>12 Bigger Monsters,</i> 2011</a>
+			</p>
+		</div>
+		
+	</div>
+	
+</section>
+
+
+
+	<!-- LOAD JAVASCRIPT LATE - JUST BEFORE THE BODY TAG 
+	     That way the browser will have loaded the images
+		 and will know the width of the images. No need to
+		 specify the width in the CSS or inline. -->
+
+	<!-- jQuery library - Please load it from Google API's -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+
+	<!-- jQuery UI (Custom Download containing only Widget and Effects Core)
+	     You can make your own at: http://jqueryui.com/download -->
+	<script src="js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+	
+	<!-- Latest version (3.1.4) of jQuery Mouse Wheel by Brandon Aaron
+	     You will find it here: https://github.com/brandonaaron/jquery-mousewheel -->
+	<script src="js/jquery.mousewheel.min.js" type="text/javascript"></script>
+
+	<!-- jQuery Kinectic (1.8.2) used for touch scrolling -->
+	<!-- https://github.com/davetayls/jquery.kinetic/ -->
+	<script src="js/jquery.kinetic.min.js" type="text/javascript"></script>
+
+	<!-- Smooth Div Scroll 1.3 minified-->
+	<script src="js/jquery.smoothdivscroll-1.3-min.js" type="text/javascript"></script>
+
+	<!-- If you want to look at the uncompressed version you find it at
+	     js/jquery.smoothDivScroll-1.3.js -->
+
+	<!-- Plugin initialization -->
+	<script type="text/javascript">
+		// Initialize the plugin with no custom options
+		$(document).ready(function () {
+			// None of the options are set
+			$("div#makeMeScrollable").smoothDivScroll({
+				autoScrollingMode: "",
+				mousewheelScrolling: "horizontal",
+				mousewheelScrollingStep: -.5,
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		 $(".scroll").click(function(event){
+		         event.preventDefault();
+		         //calculate destination place
+		         var dest=0;
+		         if($(this.hash).offset().top > $(document).height()-$(window).height()){
+		              dest=$(document).height()-$(window).height();
+		         }else{
+		              dest=$(this.hash).offset().top;
+		         }
+		         //go to destination
+		         $('html,body').animate({scrollTop:dest}, 1000,'swing');
+	     });
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+		$(".toolbar").hide();
+		$(".toolbarh1").click(function(){
+		    $(".toolbar").slideToggle(1000);
+		    $(".initialhide").slideToggle(1050);
+		  });
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+		$(".toolbar").hide();
+		$(".tool").click(function(){
+		    $(".toolbar").slideToggle(1000);
+		    $(".initialhide").slideToggle(1050);
+		  });
+		});
+	</script>
+
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+		$(".toolbar").hide();
+		$(".intext").click(function(){
+		    $(".toolbar").slideToggle(1000);
+		    $(".initialhide").slideToggle(1050);
+		  });
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+		$(".toolbar").hide();
+		$(".quote").click(function(){
+		    $(".toolbar").slideToggle(1000);
+		    $(".initialhide").slideToggle(1050);
+		  });
+		});
+	</script>
+
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+		$("section.first").toggleClass("theone");
+		$("section").click(function(){
+			$(this).addClass("theone");
+		  });
+		});
+	</script>
+
+	<script>
+		$( ".researchanddestroy-inline" ).hover(
+		  function() {
+		    $( "#researchanddestroy-link" ).append( $( "<span></br>by Daniel van der Velden</br></span>" ) );
+		  }, function() {
+		    $( "#researchanddestroy-link").find( "span:last" ).remove();
+		  }
+		);
+
+		$( ".researchanddestroy-inline" ).hover(
+		  function() {
+		    $( "#researchanddestroy-link" ).prepend( $( "<span></br></span>" ) );
+		  }, function() {
+		    $( "#researchanddestroy-link").find( "span:last" ).remove();
+		  }
+		);
+
+		$( ".researchanddestroy-inline" ).hover(function() {
+			$( "#researchanddestroy-link" ).toggleClass("highlight");
+		});
+	</script>
+
+	<script>
+		$( ".fuckcontent" ).hover(
+		  function() {
+		    $( "#fuckcontent-link" ).append( $( "<span></br>by Daniel van der Velden</br></span>" ) );
+		  }, function() {
+		    $( "#fuckcontent-link").find( "span:last" ).remove();
+		  }
+		);
+
+		$( ".fuckcontent" ).hover(
+		  function() {
+		    $( "#fuckcontent-link" ).prepend( $( "<span></br></span>" ) );
+		  }, function() {
+		    $( "#fuckcontent-link").find( "span:last" ).remove();
+		  }
+		);
+
+		$( ".fuckcontent").hover(function() {
+			$( "#fuckcontent-link" ).toggleClass("highlight");
+		});
+	</script>
+
+	<script>
+			$( ".designerasproducer" ).hover(
+		  function() {
+		    $( "#designerasproducer-link" ).append( $( "<span></br>by Ellen Lupton</br></span>" ) );
+		  }, function() {
+		    $( "#designerasproducer-link").find( "span:last" ).remove();
+		  }
+		);
+
+		$( ".designerasproducer" ).hover(
+		  function() {
+		    $( "#designerasproducer-link" ).prepend( $( "<span></br></span>" ) );
+		  }, function() {
+		    $( "#designerasproducer-link").find( "span:last" ).remove();
+		  }
+		);
+
+		$( ".designerasproducer" ).hover(function() {
+			$( "#designerasproducer-link" ).toggleClass("highlight");
+		});
+	</script>
+
+	<script>
+		$( ".practicefromeverydaylife" ).hover(
+		  function() {
+		    $( "#practicefromeverydaylife-link" ).append( $( "<span></br>by Andrew Blauvelt</br></span>" ) );
+		  }, function() {
+		    $( "#practicefromeverydaylife-link").find( "span:last" ).remove();
+		  }
+		);
+
+		$( ".practicefromeverydaylife" ).hover(
+		  function() {
+		    $( "#practicefromeverydaylife-link" ).prepend( $( "<span></br></span>" ) );
+		  }, function() {
+		    $( "#practicefromeverydaylife-link").find( "span:last" ).remove();
+		  }
+		);
+
+		$( ".practicefromeverydaylife" ).hover(function() {
+			$( "#practicefromeverydaylife-link" ).toggleClass("highlight");
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+		   $('a.avoidclick').click(function(e) {
+		    e.preventDefault();
+		    return false;
+				 });
+			});
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+		   $('.intext').click(function(e) {
+	        e.preventDefault();
+	        return false;
+    });
+		});
+	</script>
+
+	<script>
+		$( ".brandnewworlds" ).hover(
+		  function() {
+		    $( "#brandnewworlds-link" ).append( $( "<span></br>by Andrew Blauvelt</br></span>" ) );
+		  }, function() {
+		    $( "#brandnewworlds-link").find( "span:last" ).remove();
+		  }
+		);
+
+		$( ".brandnewworlds" ).hover(
+		  function() {
+		    $( "#brandnewworlds-link" ).prepend( $( "<span></br></span>" ) );
+		  }, function() {
+		    $( "#brandnewworlds-link").find( "span:last" ).remove();
+		  }
+		);
+
+		$( ".brandnewworlds" ).hover(function() {
+			$( "#brandnewworlds-link" ).toggleClass("highlight");
+		});
+
+
+	</script>
+
+	<script>
+		$( ".schooldays" ).hover(
+		  function() {
+		    $( "#schooldays-link" ).append( $( "<span></br>by Andrew Blauvelt</br></span>" ) );
+		  }, function() {
+		    $( "#schooldays-link").find( "span:last" ).remove();
+		  }
+		);
+
+		$( ".schooldays" ).hover(
+		  function() {
+		    $( "#schooldays-link" ).prepend( $( "<span></br></span>" ) );
+		  }, function() {
+		    $( "#schooldays-link").find( "span:last" ).remove();
+		  }
+		);
+
+		$( ".schooldays" ).hover(function() {
+			$( "#schooldays-link" ).toggleClass("highlight");
+		});
+	</script>
+
+
+
+
+
+
+</body>
+</html>
